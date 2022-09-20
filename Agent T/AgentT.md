@@ -63,11 +63,11 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ![](shell.png)
 
-### And there we go. After supplying the full url to the script we got a shell. Lets see what user we landed on.
+### And there we go. After supplying the full url we got a shell. Lets see what user we landed on.
 
 ![](root.png)
 
-### Would you look at that. Looks like we are root right away. Lets try to move around and find the flag.
+### Would you look at that. Seems like we are root right away. Lets try to move around and find the flag.
 
 ![](pwd.png)
 

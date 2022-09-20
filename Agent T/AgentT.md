@@ -53,4 +53,28 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ### This looks very promising. Remote Code Execution on our exact version. Lets give it a go.
 
+## Exploitation
 
+### First lets copy the exploit in the current directory.
+
+![](searchsploit_copy.png)
+
+### We can see it is a python script. Lets run it with __python3__.
+
+![](shell.png)
+
+### And there we go. After supplying the full url to the script we got a shell. Lets see what user we landed on.
+
+![](root.png)
+
+### Would you look at that. Looks like we are root right away. Lets try to move around and find the flag.
+
+![](pwd.png)
+
+### Looks like we are in _/var/www/html_. But this shell is not letting us change directory. So lets start looking from the root direcotry and list files until we find our flag.
+
+![](rootdir.png)
+
+### Seems like we have found our flag file in the root directory.
+
+![](flag.png)

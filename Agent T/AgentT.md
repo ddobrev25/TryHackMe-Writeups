@@ -45,7 +45,7 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ### First thing that caught my eye was that we are logged in as the admin user. But after clicking around the website for a few minutes, I did not find anything there. 
 
-### The next thing that came to my mind was to check the version of the http service for any exploits. We can see its the __PHP 8.1.0-dev__ version from our nmap scan. 
+### The next thing that came to my mind was to check the version of the http service for any exploits. We can see its the _PHP 8.1.0-dev_ version from our nmap scan. 
 
 ### Lets run a searchsploit scan to see if there are any known expolits on this version.
 
@@ -78,3 +78,8 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 ### Seems like we have found our flag file in the root directory.
 
 ![](flag.png)
+
+Best Regards, 
+
+[DragonBG](https://tryhackme.com/p/DragonBG)
+

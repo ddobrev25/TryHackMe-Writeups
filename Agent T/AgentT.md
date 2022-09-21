@@ -71,7 +71,7 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ![](pwd.png)
 
-### Looks like we are in _/var/www/html_. But this shell is not letting us change directory. So lets start looking from the root direcotry and list files until we find our flag.
+### Looks like we are in _/var/www/html_. But this shell is not letting us change directory. So lets start looking from the root directory and list files until we find our flag.
 
 ![](rootdir.png)
 

@@ -67,7 +67,7 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ![](root.png)
 
-### Would you look at that. Seems like we are root right away. Lets try to move around and find the flag.
+### Would you look at that! Seems like we are root right away. Lets try to move around and find the flag.
 
 ![](pwd.png)
 

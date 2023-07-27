@@ -63,12 +63,12 @@ My tool of choice is **gobuster**.
 * static
 ![](img/5.png)
 
-### The results are mostly expected. Except there is something interesting in *static*.
+The results are mostly expected. Except there is something interesting in *static*.
 
 ![](img/6.png)
 
-The other numbers we see are actual images and we can tell that by the size. 
-But 00 does not look like an image. Lets take a look.
+The files we see are actual images and we can tell that by the size. 
+But 00 does not match this pattern. Lets take a look.
 
 ![](img/7.png)
 
@@ -84,15 +84,17 @@ Looks like it is a dev note. I have highlighted in red the things we can make us
 * valleyDev/admin
 * admin/valleyDev
 
-### None seems to work. We are going to have to look for something else. Perhaps the source.
+### None of them seems to work. We are going to have to look for something else. Perhaps the source.
 
 ![](img/9.png)
 
 ### We can see some JS scripts that could be of interest.
-* dev.js ![](img/10.png)
-* button.js ![](img/11.png)
+* dev.js 
+![](img/10.png)
+* button.js 
+![](img/11.png)
 
-### Looks like we have credentials on *dev.js* script. A file in the subdirectory is also revealed and we can see that we are redirected to it when we authenticate. So we can either enter those credentials or directly access the file.
+Looks like we have credentials on *dev.js* script. A file in the subdirectory is also revealed and we can see that we are redirected to it when we authenticate. So we can either enter those credentials or directly access the file.
 
 ![](img/12.png)
 
@@ -136,13 +138,20 @@ Lets see what we can work with.
     ![](img/27.png)
     ![](img/28.png)
     * We see multiple index.html files. Lets check them.
+
     ![](img/29.png)
     * We found more credentials!
-    * Lets go back in wireshark and find out where they come from.
+    * Now lets go back in wireshark and find out where they come from.
     ![](img/30.png)
     * After setting http fiter and looking around we find a POST request. Lets follow the HTTP stream.
     ![](img/31.png)
     ![](img/32.png)
+
+## Exploitation
+
+### Now that we have more credentials we can try them against FTP and SSH.
+* No success on FTP but surely enough we got a successful login on SSH.
+![](img/33.png)
 
 
 

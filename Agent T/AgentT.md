@@ -41,7 +41,7 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 ```
 
 ### We can see port 80 open and running http. Lets give the website a visit.
-![](website.png)
+![](img/website.png)
 
 ### First thing that caught my eye was that we are logged in as the admin user. But after clicking around the website for a few minutes, I did not find anything there. 
 
@@ -49,7 +49,7 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ### Lets run a searchsploit scan to see if there are any known expolits on this version.
 
-![](searchsploit.png)
+![](img/searchsploit.png)
 
 ### This looks very promising. Remote Code Execution on our exact version. Lets give it a go.
 
@@ -57,27 +57,27 @@ Nmap done: 1 IP address (1 host up) scanned in 95.05 seconds
 
 ### First lets copy the exploit in the current directory.
 
-![](searchsploit_copy.png)
+![](img/searchsploit_copy.png)
 
 ### We can see it is a python script. Lets run it with __python3__.
 
-![](shell.png)
+![](img/shell.png)
 
 ### And there we go. After supplying the full url we got a shell. Lets see what user we landed on.
 
-![](root.png)
+![](img/root.png)
 
 ### Would you look at that! Seems like we are root right away. Lets try to move around and find the flag.
 
-![](pwd.png)
+![](img/pwd.png)
 
 ### Looks like we are in _/var/www/html_. But this shell is not letting us change directory. So lets start looking from the root directory and list files until we find our flag.
 
-![](rootdir.png)
+![](img/rootdir.png)
 
 ### Seems like we have found our flag file in the root directory.
 
-![](flag.png)
+![](img/flag.png)
 
 Best Regards, 
 

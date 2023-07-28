@@ -36,7 +36,7 @@ Nmap done: 1 IP address (1 host up) scanned in 37.10 seconds
 ```
 
 ### We have a website, SSH and FTP.
-* With SSH we can'd do much at this point.
+* With SSH we can't do much at this point.
 * We can check FTP for anonymous login. In this case we don't have anonymous access.
 * We are left with the website on port 80. 
 
@@ -68,7 +68,7 @@ The results are mostly expected. Except there is something interesting in *stati
 ![](img/6.png)
 
 The files we see are actual images and we can tell that by the size. 
-But 00 does not match this pattern. Lets take a look.
+But ***00*** does not match this pattern. Lets take a look.
 
 ![](img/7.png)
 
@@ -126,7 +126,7 @@ Lets see what we can work with.
     ![](img/20.png)
     ![](img/21.png)
     * Well, nothing. Thankfully we have more capture files. Lets move on to the next one.
-* siemHTTP1.pcapng (Rabbit hole 2)
+* siemHTTP1.pcapng (Rabbit hole)
     * Lets set an HTTP filter.
     ![](img/22.png)
     * Could not find anything interesting. Lets try to export the objects from the http conversation.
@@ -213,7 +213,7 @@ find / -group <group>
 ![](img/48.png)
 ![](img/49.png)
 
-### Recall that the script we found earlier uses base64 module to encode the images. We can modify the base64 file and add code we want to run because of the ***valleyAdmin*** group we are in. Any code we add to the base64 module will be executed with root privileges because that is how it is set in the cronjob.
+### Recall that the script we found earlier uses base64 module to encode the images. We can modify the base64 file and add code we want to run because the ***valleyAdmin*** group we are in has permission to do so. Any code we add to the base64 module will be executed with root privileges because the root user is the owner of the cronjob.
 
 ### So let's set up a reverse shell. I will be using this one from a cheat sheet online:
 

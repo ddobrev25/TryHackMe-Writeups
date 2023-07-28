@@ -78,13 +78,13 @@ Looks like it is a dev note. I have highlighted in red the things we can make us
 
 ### Nice! We have a login portal.
 
-### I tried some default crednetials.
+### I tried some default credentials.
 * admin/admin
 * valleyDev/valleyDev
 * valleyDev/admin
 * admin/valleyDev
 
-### None of them seems to work. We are going to have to look for something else. Perhaps the source.
+### None of them seem to work. We are going to have to look for something else. Perhaps the source.
 
 ![](img/9.png)
 
@@ -119,13 +119,13 @@ Lets see what we can work with.
     ![](img/16.png)
     ![](img/17.png)
     Nothing interesting here.
-    * Actual file transfers in ftp happen with the **ftp-data** protocol so lets fiter for that. We see some traffic. Lets follow the stream again.
+    * Actual file transfers in ftp happen with the **ftp-data** protocol so lets filter for that. We see some traffic. Lets follow the stream again.
     ![](img/18.png)
     ![](img/19.png)
     * Looks interesting at first but the files appear to be 0 bytes. Lets try to export them anyway.
     ![](img/20.png)
     ![](img/21.png)
-    * Well, nothing. Thankfully we have more files. Lets move on to the next one.
+    * Well, nothing. Thankfully we have more capture files. Lets move on to the next one.
 * siemHTTP1.pcapng (Rabbit hole 2)
     * Lets set an HTTP filter.
     ![](img/22.png)
@@ -206,7 +206,7 @@ find / -group <group>
 
 ![](img/47.png)
 
-### I have also redirected ***stderr*** to not see permission denied messages using ***2>/dev/null***.
+### I have also redirected ***stderr*** to ***/dev/null*** to not see error messages.
 
 ### We can see the group has full access to **python3.8** folder and **base64.py** file.
 
